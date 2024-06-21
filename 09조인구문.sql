@@ -25,6 +25,7 @@ SELECT I.ID,
 FROM INFO I --테이블 엘리어스
 INNER JOIN AUTH A 
 ON I.AUTH_ID = A.AUTH_ID;
+
 --연결할 키가 같다면 USING구문을 사용할 수 있음
 SELECT *
 FROM INFO I
@@ -33,10 +34,10 @@ USING (AUTH_ID);
 
 --------------------------------------------------------------------------------
 --OUTER JOIN
---LEFT OUTER JOIN (OUTER생략가능) - 왼쪽테이블이 기준이 되서, 왼쪽테이블은 다나옴.
+--LEFT OUTER JOIN (OUTER 생략가능) - 왼쪽테이블이 기준이 돼서, 왼쪽테이블은 다 나옴.
 SELECT * FROM INFO I LEFT OUTER JOIN AUTH A ON I.AUTH_ID = A.AUTH_ID;
 
---RIGHT OUTER JOIN - 오른쪽테이블이 기준이 되서, 오른쪽테이블은 다나옴.
+--RIGHT OUTER JOIN - 오른쪽테이블이 기준이 돼서, 오른쪽테이블은 다나옴.
 SELECT * FROM INFO I RIGHT OUTER JOIN AUTH A ON I.AUTH_ID = A.AUTH_ID;
 
 --RIGHT조인의 테이블 자리만 바꿔주면 LEFT JOIN
@@ -49,7 +50,7 @@ SELECT * FROM INFO I FULL OUTER JOIN AUTH A ON I.AUTH_ID = A.AUTH_ID;
 SELECT * FROM INFO I CROSS JOIN AUTH A;
 
 --------------------------------------------------------------------------------
---SELF JOIN (하나의 테이블을 가지고 조인을 거는것 - 조건 테이블 안에 연결가능한 키가 필요함 )
+--SELF JOIN (하나의 테이블을 가지고 조인을 거는 것 - 조건 테이블 안에 연결 가능한 키가 필요함 )
 SELECT * FROM EMPLOYEES;
 
 SELECT * 
@@ -73,7 +74,7 @@ WHERE I.AUTH_ID = A.AUTH_ID(+); --붙일 테이블에 +
 -- 오라클 RIGHT JOIN
 SELECT *
 FROM INFO I, AUTH A
-WHERE I.AUTH_ID(+) = A.AUTH_ID; --
+WHERE I.AUTH_ID(+) = A.AUTH_ID; 
 
 -- 오라클 FULL OUTER JOIN은 없음
 
@@ -97,27 +98,5 @@ LEFT JOIN LOCATIONS L ON D.LOCATION_ID = L.LOCATION_ID
 WHERE EMPLOYEE_ID >= 150;
 -- 평범하게 생각하면 N테이블에 1테이블을 붙이는게 가장 많다.
 
--- 1 에 N을 붙임
+-- 1에 N을 붙임
 SELECT * FROM DEPARTMENTS D LEFT JOIN EMPLOYEES E ON D.DEPARTMENT_ID = E.DEPARTMENT_ID;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
